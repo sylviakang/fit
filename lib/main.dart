@@ -104,9 +104,7 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("MoveGo 健康追蹤"),
-        actions: [
-          IconButton(onPressed: _resetData, icon: const Icon(Icons.refresh)),
-        ],
+        actions: [IconButton(onPressed: _resetData, icon: Icon(Icons.refresh))],
       ),
       body: SingleChildScrollView(
         child: Column(
