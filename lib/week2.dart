@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart'; // 第一週：圓環套件
 import 'package:sensors_plus/sensors_plus.dart'; // 第二週：感測器套件
-import 'dart:async'; // 第二週：處理監聽流
+import 'dart:async'; // 第二週：處理監聽流 StreamSubscription
 
 void main() => runApp(const MoveGoApp());
 
@@ -43,6 +43,8 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
   void _startTracking() {
     // 監聽陀螺儀數據
     _gyroSubscription = gyroscopeEventStream().listen((GyroscopeEvent event) {
+      // 範例：設定每 50 毫秒讀取一次 (約 20Hz)
+      gyroscopeEventStream(samplingPeriod: const Duration(milliseconds: 50));
       // 核心算法：計算三軸旋轉總和 (取絕對值)
       double motion = event.x.abs() + event.y.abs() + event.z.abs();
 
@@ -131,7 +133,7 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
     );
   }
 
-  // 封裝小工具：建立數據欄位
+  // 自己定義的封裝小工具：建立數據欄位
   Widget _buildInfoColumn(
     IconData icon,
     String value,
