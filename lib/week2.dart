@@ -96,7 +96,11 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
                 const Text("步"),
               ],
             ),
+<<<<<<< HEAD
             progressColor: _steps < 200 ? Colors.orange : Colors.red,
+=======
+            progressColor: Colors.orange,
+>>>>>>> 3105b1679d31bd962b58fca931a037da49e93800
             backgroundColor: Colors.grey.shade200,
             circularStrokeCap: CircularStrokeCap.round,
           ),
@@ -109,7 +113,11 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
             children: [
               _buildInfoColumn(
                 Icons.local_fire_department,
+<<<<<<< HEAD
                 _calories.toStringAsFixed(2),
+=======
+                _calories.toStringAsFixed(1),
+>>>>>>> 3105b1679d31bd962b58fca931a037da49e93800
                 "kcal",
                 Colors.red,
               ),
@@ -127,8 +135,11 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() {
           _steps += 10;
+<<<<<<< HEAD
           _calories = _steps * 0.04; // 換算熱量
           _distance = _steps * 0.0007; // 換算公里
+=======
+>>>>>>> 3105b1679d31bd962b58fca931a037da49e93800
         }),
         child: const Icon(Icons.add),
       ),
