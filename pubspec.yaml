@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   sensors_plus: ^7.0.0 # 讀取陀螺儀/加速度計
   percent_indicator: ^4.2.5 # 畫圓環
-  shared_preferences: ^2.5.4
+  shared_preferences: ^2.5.5
   fl_chart: ^1.1.1
 
 dev_dependencies:
