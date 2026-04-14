@@ -30,10 +30,10 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
   int _steps = 0;
   double _calories = 0.0;
   double _distance = 0.0;
-  int _goalSteps = 1000; // 預設目標 1000 步
+  final int _goalSteps = 1000; // 預設目標 1000 步
 
   // 歷史數據清單：前 6 天為模擬數據，最後一項為今日
-  List<int> _historySteps = [1200, 3000, 2500, 4500, 3800, 2000, 0];
+  final List<int> _historySteps = [1200, 3000, 2500, 4500, 3800, 2000, 0];
 
   StreamSubscription? _subscription;
 

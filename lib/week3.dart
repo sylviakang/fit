@@ -31,6 +31,7 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
   // 第三週新增：勳章解鎖狀態
   bool _badge1 = false; // 10步
   bool _badge2 = false; // 50步
+  bool _badge3 = false; // 100步
 
   StreamSubscription<GyroscopeEvent>? _gyroSubscription;
 
@@ -48,6 +49,7 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
       _steps = prefs.getInt('steps') ?? 0;
       _badge1 = prefs.getBool('badge1') ?? false;
       _badge2 = prefs.getBool('badge2') ?? false;
+      _badge3 = prefs.getBool('badge3') ?? false;
       _updateStats();
     });
   }
@@ -57,12 +59,14 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
     await prefs.setInt('steps', _steps);
     await prefs.setBool('badge1', _badge1);
     await prefs.setBool('badge2', _badge2);
+    await prefs.setBool('badge3', _badge3);
   }
 
   void _updateStats() {
     // 檢查勳章邏輯
     if (_steps >= 10 && !_badge1) _badge1 = true;
     if (_steps >= 50 && !_badge2) _badge2 = true;
+    if (_steps >= 100 && !_badge3) _badge3 = true;
   }
 
   void _startTracking() {
@@ -106,10 +110,24 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
                 _buildBadge("👟", "初試啼聲", _badge1),
                 const SizedBox(width: 20),
                 _buildBadge("🔥", "燃脂新手", _badge2),
+                const SizedBox(width: 20),
+                _buildBadge("🏆", "運動達人", _badge3),
               ],
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.keyboard_return_sharp),
+        onPressed: () {
+          setState(() {
+            _steps = 0;
+            _badge1 = false;
+            _badge2 = false;
+            _badge3 = false;
+            _saveData();
+          });
+        },
       ),
     );
   }
