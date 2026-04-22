@@ -45,6 +45,12 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
     _startTracking();
   }
 
+  @override
+  void dispose() {
+    _gyroSubscription?.cancel();
+    super.dispose();
+  }
+
   // --- 邏輯處理區 ---
 
   Future<void> _loadData() async {
@@ -115,14 +121,14 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
                 alignment: Alignment.center,
                 children: [
                   // 圓形進度條在外圈
-                  // CircularPercentIndicator(
-                  //   radius: 60,
-                  //   lineWidth: 4,
-                  //   percent: percent,
-                  //   progressColor: Colors.green,
-                  //   backgroundColor: Colors.transparent,
-                  //   circularStrokeCap: CircularStrokeCap.round,
-                  // ),
+                  CircularPercentIndicator(
+                    radius: 90,
+                    lineWidth: 4,
+                    percent: percent,
+                    progressColor: Colors.green,
+                    backgroundColor: Colors.transparent,
+                    circularStrokeCap: CircularStrokeCap.round,
+                  ),
                   // 樹木圖片在中心
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -226,7 +232,7 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
               barRods: [
                 BarChartRodData(
                   toY: e.value.toDouble(),
-                  color: Colors.green.withOpacity(e.key == 6 ? 1.0 : 0.3),
+                  color: Colors.green.withValues(alpha: e.key == 6 ? 1.0 : 0.3),
                   width: 14,
                 ),
               ],
