@@ -98,15 +98,14 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
     return Scaffold(
       appBar: AppBar(title: const Text("MoveGo 虛擬森林"), centerTitle: true),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
             const SizedBox(height: 20),
 
             // 【新功能】樹木視覺化顯示
             Container(
-              height: 200,
-              width: 200,
+              height: 180,
+              width: 180,
               decoration: BoxDecoration(
                 color: Colors.green.shade50,
                 shape: BoxShape.circle,
@@ -116,14 +115,14 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
                 alignment: Alignment.center,
                 children: [
                   // 圓形進度條在外圈
-                  CircularPercentIndicator(
-                    radius: 100,
-                    lineWidth: 10,
-                    percent: percent,
-                    progressColor: Colors.green,
-                    backgroundColor: Colors.transparent,
-                    circularStrokeCap: CircularStrokeCap.round,
-                  ),
+                  // CircularPercentIndicator(
+                  //   radius: 60,
+                  //   lineWidth: 4,
+                  //   percent: percent,
+                  //   progressColor: Colors.green,
+                  //   backgroundColor: Colors.transparent,
+                  //   circularStrokeCap: CircularStrokeCap.round,
+                  // ),
                   // 樹木圖片在中心
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -131,10 +130,10 @@ class _MoveGoHomePageState extends State<MoveGoHomePage> {
                       // 如果沒有圖片，可以用 Emoji 代替測試： Text(_treeImage == "assets/tree.png" ? "🌳" : "🌱", style: TextStyle(fontSize: 80)),
                       Image.asset(
                         _treeImage,
-                        height: 100,
+                        height: 72,
                         errorBuilder: (c, e, s) => const Icon(
                           Icons.eco,
-                          size: 80,
+                          size: 72,
                           color: Colors.green,
                         ),
                       ),
